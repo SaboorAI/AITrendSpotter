@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --header-height: 70px;
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --card-hover-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    --card-hover-y: -6px;
+    --animation-timing: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-gray-50 text-foreground tracking-tight;
+  }
+
+  /* Modern scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+}
+
+@layer components {
+  .card-shadow {
+    box-shadow: var(--card-shadow);
+    transition: transform var(--animation-timing), 
+                box-shadow var(--animation-timing);
+  }
+
+  .card-shadow:hover {
+    transform: translateY(var(--card-hover-y));
+    box-shadow: var(--card-hover-shadow);
+  }
+
+  .glass-effect {
+    @apply bg-white bg-opacity-80 backdrop-blur-md;
+  }
+
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400;
+  }
+
+  .animation-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .product-grid-item {
+    @apply transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
